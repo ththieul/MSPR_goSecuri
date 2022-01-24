@@ -5,6 +5,11 @@ import java.util.*;
 
 public class Main {
 
+    public static void addPic(PrintWriter fileOut, String imgPath, String imgAlt){
+        String str = String.format("<img src='%1$s' alt='%2$s'>", imgPath, imgAlt);
+        fileOut.println(str);
+    }
+
     public static void main(String[] args) {
 
         //	HTML stands for "Hyper Text Markup Language"
@@ -34,7 +39,7 @@ public class Main {
         try {
 
             //3. rename .txt as .html
-            fileIn = new Scanner(new FileReader(filenameIn));
+            fileIn = new Scanner(new FileReader("./src/main/resources/"+filenameIn));
             dotIndex = filenameIn.lastIndexOf(".");
             if(dotIndex == -1) {
                 filenameOut = filenameIn + ".html";
