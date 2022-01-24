@@ -10,7 +10,7 @@ public class Main {
         fileOut.println(str);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         //	HTML stands for "Hyper Text Markup Language"
         // 	used for creating web pages
@@ -33,6 +33,7 @@ public class Main {
 
         System.out.println("Enter file name or path");
         filenameIn = scanner.nextLine();
+        SortFile.sortFile();
 
         // 2. check if file exists
 
