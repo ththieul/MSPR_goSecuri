@@ -13,21 +13,23 @@ import java.util.List;
 public class SortFile {
     public static void sortFile() throws IOException, IOException {
 
-        List<String> lines = loadLines("./src/main/resources/staff.txt");
-        System.out.println(lines + "\n");
-        Collections.sort(lines);
+        List<String> lines = getSortedList();
         Path file = Paths.get("./src/main/resources/staff.txt");
         Files.write(file, lines, StandardCharsets.UTF_8);
     }
 
-    private static List<String> loadLines(String fileName) throws IOException {
-        System.out.println("Reading file");
+    public static List<String> getSortedList() throws IOException {
+        List<String> lines = loadLines("./src/main/resources/staff.txt");
+        Collections.sort(lines);
+        return lines;
+    }
+
+    public static List<String> loadLines(String fileName) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(fileName));
         List<String> lines = new ArrayList<String>();
         String line;
         while ((line = br.readLine()) != null)
             lines.add(line);
-        System.out.println("... Read file.");
         return lines;
     }
 }
