@@ -1,9 +1,7 @@
 package fr.epsi.mspr;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -14,9 +12,16 @@ public class HtmlGenerator {
     public PrintWriter fileOut; //HTML file connection
     public String filenameIn; //original file's name
     public String filenameOut; //new HTML file's name
+    public String agentFile;
     public int dotIndex; //position of . in filename
     public String line = null; // a line from the input file
     public List<String> agentList = null;
+
+    public static void addPic(PrintWriter fileOut, String imgPath, String imgAlt){
+        String str = String.format("<img src='%1$s' alt='%2$s'>", imgPath, imgAlt);
+        fileOut.println(str);
+    }
+
     public void generateLandingPage(){
         //	HTML stands for "Hyper Text Markup Language"
         // 	used for creating web pages
@@ -29,12 +34,6 @@ public class HtmlGenerator {
 
         filenameIn = "staff.txt";
 
-        try {
-            SortFile.sortFile();
-            agentList = SortFile.getSortedList();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         // 2. check if file exists
 
@@ -86,6 +85,25 @@ public class HtmlGenerator {
             System.out.println("File not found");
         }
 
+    }
+
+    public void generateAgentFiles(){
+        try {
+            SortFile.sortFile();
+            agentList = SortFile.getSortedList();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (String agent:agentList) {
+            String currentFileString = "./src/main/resources/agents_html_file/"+agent+".html";
+            File htmlFile = new File(currentFileString);
+            try {
+                htmlFile.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            System.out.println(htmlFile);
+        }
     }
 
 }
