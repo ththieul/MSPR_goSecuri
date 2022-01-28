@@ -40,7 +40,7 @@ public class HtmlGenerator {
         try {
 
             //3. rename .txt as .html
-            fileIn = new Scanner(new FileReader("./src/main/resources/"+filenameIn));
+            fileIn = new Scanner(new FileReader("./mspr_maven/src/main/resources/"+filenameIn));
             dotIndex = filenameIn.lastIndexOf(".");
             filenameOut = filenameIn.substring(0,dotIndex) + ".html";
             fileOut = new PrintWriter(filenameOut);
@@ -95,7 +95,7 @@ public class HtmlGenerator {
             e.printStackTrace();
         }
         for (String agent:agentList) {
-            String currentFileString = "./src/main/resources/agents_html_file/"+agent+".html";
+            String currentFileString = "./mspr_maven/src/main/resources/agents_html_file/"+agent+".html";
             File htmlFile = new File(currentFileString);
             try {
                 htmlFile.createNewFile();
