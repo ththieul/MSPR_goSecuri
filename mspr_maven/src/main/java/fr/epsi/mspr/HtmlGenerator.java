@@ -39,7 +39,7 @@ public class HtmlGenerator {
         try {
 
             //3. rename .txt as .html
-            fileIn = new Scanner(new FileReader("./mspr_maven/src/main/resources/"+filenameIn));
+            fileIn = new Scanner(new FileReader("./"+filenameIn));
             filenameOut = "index.html";
             fileOut = new PrintWriter(filenameOut);
 
