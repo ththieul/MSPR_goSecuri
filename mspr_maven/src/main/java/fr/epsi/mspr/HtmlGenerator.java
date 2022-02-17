@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class HtmlGenerator {
     public Scanner fileIn; //input file connection
     public PrintWriter fileOut; //HTML file connection
+    public PrintWriter agentPersonalFile;
     public String filenameIn; //original file's name
     public String filenameOut; //new HTML file's name
     public String agentFile;
@@ -21,7 +22,18 @@ public class HtmlGenerator {
         fileOut.println(str);
     }
 
+    public List<String> getAgentList(){
+        try {
+            SortFile.sortFile();
+            agentList = SortFile.getSortedList();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return agentList;
+    }
+
     public void generateLandingPage(){
+        agentList = getAgentList();
         //	HTML stands for "Hyper Text Markup Language"
         // 	used for creating web pages
 
@@ -39,7 +51,7 @@ public class HtmlGenerator {
         try {
 
             //3. rename .txt as .html
-            fileIn = new Scanner(new FileReader("./"+filenameIn));
+            fileIn = new Scanner(new FileReader("../"+filenameIn));
             filenameOut = "index.html";
             fileOut = new PrintWriter(filenameOut);
 
@@ -60,16 +72,14 @@ public class HtmlGenerator {
                 fileOut.println("<head>");
                 fileOut.println("</head>");
                 fileOut.println("<body>");
-                fileOut.println(line);
+                fileOut.println("<ul>");
 
-                while(fileIn.hasNextLine()) {
-
+                for (String agent:agentList) {
+                    fileOut.println(String.format("<li><a href=\"./src/main/resources/agents_html_file/%1$s.html\">%1$s</a></li>",agent));
                     fileOut.println("<br>");
-                    line = fileIn.nextLine();
-
-                    fileOut.println(line);
-
                 }
+
+                fileOut.println("</ul>");
                 fileOut.println("</body>");
                 fileOut.println("</html>");
 
@@ -86,14 +96,8 @@ public class HtmlGenerator {
     }
 
     public void generateAgentFiles(){
-        try {
-            SortFile.sortFile();
-            agentList = SortFile.getSortedList();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         for (String agent:agentList) {
-            String currentFileString = "./mspr_maven/src/main/resources/agents_html_file/"+agent+".html";
+            String currentFileString = "./src/main/resources/agents_html_file/"+agent+".html";
             File htmlFile = new File(currentFileString);
             try {
                 htmlFile.createNewFile();
@@ -102,6 +106,10 @@ public class HtmlGenerator {
             }
             System.out.println(htmlFile);
         }
+    }
+
+    public void generateAgentPage(String currentAgentFilePath){
+        agentPersonalFile new PrintWriter()
     }
 
 }
