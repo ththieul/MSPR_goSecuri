@@ -13,7 +13,6 @@ public class HtmlGenerator {
     public String filenameIn; //original file's name
     public String filenameOut; //new HTML file's name
     public String agentFile;
-    public int dotIndex; //position of . in filename
     public String line = null; // a line from the input file
     public List<String> agentList = null;
 
@@ -41,8 +40,7 @@ public class HtmlGenerator {
 
             //3. rename .txt as .html
             fileIn = new Scanner(new FileReader("./mspr_maven/src/main/resources/"+filenameIn));
-            dotIndex = filenameIn.lastIndexOf(".");
-            filenameOut = filenameIn.substring(0,dotIndex) + ".html";
+            filenameOut = "index.html";
             fileOut = new PrintWriter(filenameOut);
 
             // 4. determine if file is empty
