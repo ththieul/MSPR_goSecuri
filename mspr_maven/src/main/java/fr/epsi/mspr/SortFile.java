@@ -14,12 +14,12 @@ public class SortFile {
     public static void sortFile() throws IOException, IOException {
 
         List<String> lines = getSortedList();
-        Path file = Paths.get("./mspr_maven/src/main/resources/staff.txt");
+        Path file = Paths.get("./staff.txt");
         Files.write(file, lines, StandardCharsets.UTF_8);
     }
 
     public static List<String> getSortedList() throws IOException {
-        List<String> lines = loadLines("./mspr_maven/src/main/resources/staff.txt");
+        List<String> lines = loadLines("./staff.txt");
         Collections.sort(lines);
         return lines;
     }
