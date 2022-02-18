@@ -1,13 +1,11 @@
 package fr.epsi.mspr;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class HtmlGenerator {
+    Map<String,String> equipementMap = HashMapGenerator.HashMapFromTextFile();
     public Scanner fileIn; //input file connection
     public PrintWriter fileOut; //HTML file connection
     public PrintWriter agentPersonalFile;
@@ -22,16 +20,23 @@ public class HtmlGenerator {
         fileOut.println(str);
     }
 
-    public void generateAgentPage(String currentAgentFilePath, String currentAgentName){
+    public void generateAgentPage(String currentAgentFilePath, String currentAgentName, String currentAgenttxtFilePath){
+        List<String> currentAgentEquipementList = getAgentEquipement(currentAgenttxtFilePath);
         try (PrintWriter printWriter = agentPersonalFile = new PrintWriter(currentAgentFilePath)) {
             agentPersonalFile.println("<html>");
             agentPersonalFile.println("<head>");
             agentPersonalFile.println("</head>");
             agentPersonalFile.println("<body>");
-            agentPersonalFile.println("<ul>");
 
             agentPersonalFile.println(String.format("<p>%1$s</p>",currentAgentName));
             addPic(agentPersonalFile,String.format("../../../../../ID/%1$s.png",currentAgentName),String.format("Image of %1$s",currentAgentName));
+
+            agentPersonalFile.println("<ul>");
+
+            for (String equipement:currentAgentEquipementList) {
+                agentPersonalFile.println("<input type=\"checkbox\" checked>");
+                agentPersonalFile.println(String.format("<label>%1$s</label><br>",equipementMap.get(equipement)));
+            }
 
             agentPersonalFile.println("</ul>");
             agentPersonalFile.println("</body>");
@@ -51,6 +56,24 @@ public class HtmlGenerator {
             e.printStackTrace();
         }
         return agentList;
+    }
+
+    public List<String> getAgentEquipement(String agentTxtFilePath) {
+        List<String> agentEquipementList = new ArrayList<String>();
+        try (BufferedReader br = new BufferedReader(new FileReader(agentTxtFilePath))) {
+            String line;
+            int i = 0;
+            while ((line = br.readLine()) != null){
+                if(i > 4){
+                    agentEquipementList.add(line);
+                }
+                i++;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return agentEquipementList;
     }
 
     public void generateLandingPage(){
@@ -98,7 +121,7 @@ public class HtmlGenerator {
                 for (String agent:agentList) {
                     fileOut.println(String.format("<li><a href=\"./src/main/resources/agents_html_file/%1$s.html\">%1$s</a></li>",agent));
                     fileOut.println("<br>");
-                    generateAgentPage(String.format("./src/main/resources/agents_html_file/%1$s.html",agent),agent);
+                    generateAgentPage(String.format("./src/main/resources/agents_html_file/%1$s.html",agent),agent,String.format("../%1$s.txt",agent));
                 }
 
                 fileOut.println("</ul>");
@@ -126,7 +149,6 @@ public class HtmlGenerator {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            System.out.println(htmlFile);
         }
     }
 }
