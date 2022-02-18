@@ -22,6 +22,27 @@ public class HtmlGenerator {
         fileOut.println(str);
     }
 
+    public void generateAgentPage(String currentAgentFilePath, String currentAgentName){
+        try (PrintWriter printWriter = agentPersonalFile = new PrintWriter(currentAgentFilePath)) {
+            agentPersonalFile.println("<html>");
+            agentPersonalFile.println("<head>");
+            agentPersonalFile.println("</head>");
+            agentPersonalFile.println("<body>");
+            agentPersonalFile.println("<ul>");
+
+            agentPersonalFile.println(String.format("<p>%1$s</p>",currentAgentName));
+            addPic(agentPersonalFile,String.format("../../../../../ID/%1$s.png",currentAgentName),String.format("Image of %1$s",currentAgentName));
+
+            agentPersonalFile.println("</ul>");
+            agentPersonalFile.println("</body>");
+            agentPersonalFile.println("</html>");
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     public List<String> getAgentList(){
         try {
             SortFile.sortFile();
@@ -77,6 +98,7 @@ public class HtmlGenerator {
                 for (String agent:agentList) {
                     fileOut.println(String.format("<li><a href=\"./src/main/resources/agents_html_file/%1$s.html\">%1$s</a></li>",agent));
                     fileOut.println("<br>");
+                    generateAgentPage(String.format("./src/main/resources/agents_html_file/%1$s.html",agent),agent);
                 }
 
                 fileOut.println("</ul>");
@@ -107,10 +129,5 @@ public class HtmlGenerator {
             System.out.println(htmlFile);
         }
     }
-
-    public void generateAgentPage(String currentAgentFilePath){
-        agentPersonalFile new PrintWriter()
-    }
-
 }
 
