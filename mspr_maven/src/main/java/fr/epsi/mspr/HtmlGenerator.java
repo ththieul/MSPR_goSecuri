@@ -5,15 +5,9 @@ import java.util.*;
 
 
 public class HtmlGenerator {
-    Map<String,String> equipementMap = HashMapGenerator.HashMapFromTextFile();
-    public Scanner fileIn; //input file connection
-    public PrintWriter fileOut; //HTML file connection
-    public PrintWriter agentPersonalFile;
-    public String filenameIn; //original file's name
-    public String filenameOut; //new HTML file's name
-    public String agentFile;
-    public String line = null; // a line from the input file
-    public List<String> agentList = null;
+    Map<String,String> equipementMap = MapGenerator.equipementHashMap();
+    public Scanner fileIn;
+    public List<String> agentList = AgentList.getAgentList();
 
     public static void addPic(PrintWriter fileOut, String imgPath, String imgAlt){
         String str = String.format("<img src='%1$s' alt='%2$s'>", imgPath, imgAlt);
@@ -22,7 +16,7 @@ public class HtmlGenerator {
 
     public void generateAgentPage(String currentAgentFilePath, String currentAgentName, String currentAgenttxtFilePath){
         List<String> currentAgentEquipementList = getAgentEquipement(currentAgenttxtFilePath);
-        try (PrintWriter printWriter = agentPersonalFile = new PrintWriter(currentAgentFilePath)) {
+        try (PrintWriter agentPersonalFile = new PrintWriter(currentAgentFilePath)) {
             agentPersonalFile.println("<html>");
             agentPersonalFile.println("<head>");
             agentPersonalFile.println("</head>");
@@ -48,16 +42,6 @@ public class HtmlGenerator {
         }
     }
 
-    public List<String> getAgentList(){
-        try {
-            SortFile.sortFile();
-            agentList = SortFile.getSortedList();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return agentList;
-    }
-
     public List<String> getAgentEquipement(String agentTxtFilePath) {
         List<String> agentEquipementList = new ArrayList<String>();
         try (BufferedReader br = new BufferedReader(new FileReader(agentTxtFilePath))) {
@@ -77,27 +61,14 @@ public class HtmlGenerator {
     }
 
     public void generateLandingPage(){
-        agentList = getAgentList();
-        //	HTML stands for "Hyper Text Markup Language"
-        // 	used for creating web pages
-
-
-        // 1. check if file exists
-        // 2. rename .txt as .html
-        // 3. determine if file is empty
-        // 4. read each line and insert necessary <tags>
-
-        filenameIn = "staff.txt";
-
-
+        String line = null;
         // 2. check if file exists
 
         try {
 
             //3. rename .txt as .html
-            fileIn = new Scanner(new FileReader("../"+filenameIn));
-            filenameOut = "index.html";
-            fileOut = new PrintWriter(filenameOut);
+            fileIn = new Scanner(new FileReader("../staff.txt"));
+            PrintWriter fileOut = new PrintWriter("index.html");
 
             // 4. determine if file is empty
 
