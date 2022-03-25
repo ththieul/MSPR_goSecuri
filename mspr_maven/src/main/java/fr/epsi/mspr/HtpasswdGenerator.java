@@ -6,14 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 public class HtpasswdGenerator {
-    public List<String> agentList = AgentList.getAgentList();
+    public List<String> agentList = StaffList.getSortedAgentList();
     public Map<String, String> userPasswd = MapGenerator.userPwHashMap(agentList);
 
     public void generateHtpasswdFile() {
         try(PrintWriter printWriter = new PrintWriter(".htpasswd")) {
-            for (Map.Entry<String, String> entry : userPasswd.entrySet()) {
-                printWriter.println(entry.getKey() + ":" + entry.getValue());
-            }
+            userPasswd.forEach((key, value) -> printWriter.println(key + ":" + value));
         } catch (Exception e) {
             e.printStackTrace();
         }

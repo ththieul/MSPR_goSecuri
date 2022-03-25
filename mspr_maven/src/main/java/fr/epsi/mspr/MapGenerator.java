@@ -12,10 +12,9 @@ import java.util.Objects;
 class MapGenerator {
     public static Map<String, String> equipementHashMap()
     {
-
         Map<String, String> equipementMap = new HashMap<String, String>();
 
-        try ( BufferedReader br = new BufferedReader(new FileReader("../liste.txt"))){
+        try (BufferedReader br = new BufferedReader(new FileReader("../liste.txt"))){
 
             String line;
 
