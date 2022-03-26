@@ -1,0 +1,188 @@
+html {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  margin: 0;
+  background: rgb(36,36,36);
+  background: linear-gradient(0deg, rgba(36,36,36,1) 0%, rgba(55,158,193,1) 100%);
+  /*background: rgb(54,54,54);
+  background: linear-gradient(180deg, rgba(54,54,54,1) 0%, rgba(122,122,122,1) 100%);*/
+  /*background: rgb(55,158,193);
+  background: linear-gradient(90deg, rgba(55,158,193,1) 0%, rgba(0,0,0,1) 50%, rgba(55,158,193,1) 100%);*/
+  display: grid;
+  /*height: 100vh;*/
+  place-items: center;
+}
+
+.leaderboard {
+  /*max-width: 480px;*/
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.4);
+}
+
+.leaderboard header {
+  --start: 15%;
+  height: 130px;
+  background-image: repeating-radial-gradient(circle at var(--start), transparent 0%, transparent 10%, rgba(228, 228, 228, 0.33) 10%, rgba(228, 228, 228, 0.33) 17%), linear-gradient(to right, #dedde9, #cfcfcf);
+  color: rgb(0, 0, 0);
+  position: relative;
+  /*border-radius: 12px 12px 0 0;*/
+  overflow: hidden;
+}
+.leaderboard header .leaderboard__title {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  right: calc(var(--start) * 0.75);
+  transform: translateY(-50%);
+  text-transform: uppercase;
+  margin: 0;
+}
+.leaderboard header .leaderboard__title a {
+  display: block;
+}
+.leaderboard header .leaderboard__title--top {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 6.5px;
+}
+.leaderboard header .leaderboard__title--bottom {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 3.55px;
+  opacity: 0.65;
+  transform: translateY(-2px);
+}
+.leaderboard header .leaderboard__icon {
+  fill: #fff;
+  opacity: 0.35;
+  width: 50px;
+  position: absolute;
+  top: 50%;
+  left: var(--start);
+  transform: translate(-50%, -50%);
+}
+.leaderboard__profiles {
+  background: rgb(36,36,36);
+  background: linear-gradient(0deg, rgba(36,36,36,1) 0%, rgba(55,158,193,1) 100%);
+  border-radius: 0 0 12px 12px;
+  padding: 15px 15px 20px;
+  display: grid;
+  row-gap: 8px;
+}
+.leaderboard__profile {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  margin-left: 600px;
+  margin-right: 600px;
+  align-items: center;
+  padding: 10px 30px 10px 10px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 5px 7px -1px rgba(51, 51, 51, 0.23);
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98), box-shadow 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
+  background-color: #fff;
+}
+.leaderboard__profile:hover {
+  transform: scale(1.2);
+  box-shadow: 0 9px 47px 11px rgba(51, 51, 51, 0.18);
+}
+.leaderboard__picture {
+  max-width: 100%;
+  width: 60px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 10px #659224, 0 0 0 22px #91bf4c;
+}
+.leaderboard__name {
+  color: #979cb0;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 0.64px;
+  margin-left: 12px;
+  text-decoration: none;
+}
+.leaderboard__value {
+  color: #35d8ac;
+  font-weight: 700;
+  font-size: 34px;
+  text-align: right;
+}
+.leaderboard__value > a {
+  opacity: 0.8;
+  font-weight: 600;
+  font-size: 13px;
+  margin-left: 3px;
+}
+
+.leaderboard header img {
+  width: 120px;
+  height: 100px;
+  position: absolute;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+/*CSS d'un fiche agent*/
+
+ul {
+  margin-top: 50px;
+  margin-bottom: 211px;
+  position: relative;
+  margin-left: 35%;
+  color: azure;
+}
+
+#identite {
+  position: relative;
+  padding-left: 70%;
+}
+
+p {
+  position: relative;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 6.5px;
+  margin-left: 400px;
+  margin-top: 50px;
+  color: azure;
+}
+
+input {
+  margin-bottom: 25px;
+}
+
+label {
+  margin-bottom: 25px;
+} 
+
+@media screen and (max-width: 1100px) {
+  ul {
+    margin-bottom: 211px;
+    position: relative;
+    margin-left: 6%;
+  }
+  
+  #identite {
+    position: relative;
+    padding-left: 6%;
+    width: 340px;
+    height: 190px;
+  }
+  
+  p {
+    position: relative;
+    margin-left: 10%;
+    font-size: 18px;
+  }
+  
+  input {
+    margin-bottom: 25px;
+  }
+  
+  label {
+    margin-bottom: 25px;
+  }
+}
