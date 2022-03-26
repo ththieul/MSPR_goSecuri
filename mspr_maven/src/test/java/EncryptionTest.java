@@ -1,5 +1,3 @@
-package fr.epsi.mspr;
-
 import org.mindrot.jbcrypt.BCrypt;
 
 import static org.junit.jupiter.api.Assertions.*;

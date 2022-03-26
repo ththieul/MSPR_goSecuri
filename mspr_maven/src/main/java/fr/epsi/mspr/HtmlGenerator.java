@@ -21,7 +21,7 @@ public class HtmlGenerator {
             agentPersonalFile.println("<body>");
 
             agentPersonalFile.println(String.format("<p>%1$s</p>",agent.firstName + " " + agent.lastName));
-            addPic(agentPersonalFile,String.format("../../../../../ID/%1$s.png",agent.username),String.format("Image of %1$s",agent.username));
+            addPic(agentPersonalFile,String.format("../../../../../ID/%1$s.jpg",agent.username),String.format("Image of %1$s",agent.username));
 
             agentPersonalFile.println("<ul>");
 
