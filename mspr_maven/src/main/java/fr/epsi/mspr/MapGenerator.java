@@ -37,7 +37,7 @@ class MapGenerator {
 
         return equipementMap;
     }
-    public static Map<String, String> userPwHashMap(List<String> agentList){
+    public static Map<String, String> userPwMap(List<String> agentList){
         Map<String, String> userPw = new HashMap<>();
 
         try {

@@ -7,10 +7,10 @@ public class Main {
     public static void main(String[] args) throws IOException {
         HtmlGenerator htmlGenerator = new HtmlGenerator();
         HtpasswdGenerator htpasswdGenerator = new HtpasswdGenerator();
-        htmlGenerator.generatePages();
+        htmlGenerator.generateHTMLPages();
         htmlGenerator.generateAgentFiles();
         List<String> agentList = StaffList.getSortedAgentList();
-        MapGenerator.userPwHashMap(agentList);
+        MapGenerator.userPwMap(agentList);
         htpasswdGenerator.generateHtpasswdFile();
         StaffList.createAgentsInfosList();
     }

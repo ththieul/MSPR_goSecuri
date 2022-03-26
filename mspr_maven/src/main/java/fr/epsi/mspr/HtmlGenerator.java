@@ -40,7 +40,7 @@ public class HtmlGenerator {
         }
     }
 
-    public void generatePages(){
+    public void generateHTMLPages(){
         try (PrintWriter fileOut = new PrintWriter("index.html")){
                 fileOut.println("<html>");
                 fileOut.println("<head>");

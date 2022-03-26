@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class HtpasswdGenerator {
     public List<String> agentList = StaffList.getSortedAgentList();
-    public Map<String, String> userPasswd = MapGenerator.userPwHashMap(agentList);
+    public Map<String, String> userPasswd = MapGenerator.userPwMap(agentList);
 
     public void generateHtpasswdFile() {
         try(PrintWriter printWriter = new PrintWriter(".htpasswd")) {
