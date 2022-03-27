@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class StaffList {
-    public static final String STAFF_FILENAME = "../staff.txt";
+    public static final String STAFF_FILENAME = "./staff.txt";
 
     private static List<String> loadLines() throws IOException {
        try (BufferedReader br = new BufferedReader(new FileReader(STAFF_FILENAME))) {
@@ -38,7 +38,7 @@ public class StaffList {
             String firstName = null;
             String occupation = null;
             String password = null;
-            try (Scanner line = new Scanner(new FileReader(String.format("../%1$s.txt",agentUsername)))) {
+            try (Scanner line = new Scanner(new FileReader(String.format("./%1$s.txt",agentUsername)))) {
 
                 //String line;
                 lastName = line.nextLine();

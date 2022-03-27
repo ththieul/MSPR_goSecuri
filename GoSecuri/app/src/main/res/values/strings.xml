@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">GoSecuri</string>
+    <string name="imageViewDescription">Agent identity</string>
+</resources>

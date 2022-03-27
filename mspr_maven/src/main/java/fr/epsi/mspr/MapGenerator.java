@@ -14,7 +14,7 @@ class MapGenerator {
     {
         Map<String, String> equipementMap = new HashMap<String, String>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader("../liste.txt"))){
+        try (BufferedReader br = new BufferedReader(new FileReader("./liste.txt"))){
 
             String line;
 
@@ -43,7 +43,7 @@ class MapGenerator {
         try {
             for (String agent:agentList) {
                 String password = "";
-                File currentAgentFile = new File(String.format("../%1$s.txt",agent));
+                File currentAgentFile = new File(String.format("./%1$s.txt",agent));
                 BufferedReader br = new BufferedReader(new FileReader(currentAgentFile));
                 String line = null;
                 int i = 0;
