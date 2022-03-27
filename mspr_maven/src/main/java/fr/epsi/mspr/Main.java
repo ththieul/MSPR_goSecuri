@@ -12,6 +12,5 @@ public class Main {
         List<String> agentList = StaffList.getSortedAgentList();
         MapGenerator.userPwMap(agentList);
         htpasswdGenerator.generateHtpasswdFile();
-        StaffList.createAgentsInfosList();
     }
 }

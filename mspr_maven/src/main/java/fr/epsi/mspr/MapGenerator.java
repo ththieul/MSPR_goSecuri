@@ -10,11 +10,12 @@ import java.util.Map;
 import java.util.Objects;
 
 class MapGenerator {
+    public static final String EQUIPEMENT_FILENAME = "./liste.txt";
     public static Map<String, String> equipementHashMap()
     {
         Map<String, String> equipementMap = new HashMap<String, String>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader("./liste.txt"))){
+        try (BufferedReader br = new BufferedReader(new FileReader(EQUIPEMENT_FILENAME))){
 
             String line;
 
@@ -54,6 +55,7 @@ class MapGenerator {
                     i++;
                     userPw.put(agent, password);
                 }
+                br.close();
             }
         }
         catch (Exception e) {
