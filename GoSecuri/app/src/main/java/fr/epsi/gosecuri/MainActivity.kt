@@ -26,14 +26,14 @@ class MainActivity : BaseActivity() {
 
         Thread(Runnable {
             try {
-                val doc: Document = Jsoup.connect("https://2815-2001-861-52-e230-a00-27ff-fed6-37ed.ngrok.io/gosecuri.fr/").get()
+                val doc: Document = Jsoup.connect("https://4cca-2001-861-52-e230-a00-27ff-fed6-37ed.ngrok.io/gosecuri.fr/").get()
                 val articles: Elements = doc.select("article.leaderboard__profile")
 
                 for (article in articles) {
                     val agentUsername = article.select("img").attr("alt")
                     val fullName = article.select("a[href]").text()
                     val agent = Agent(agentUsername, fullName,
-                        "https://2815-2001-861-52-e230-a00-27ff-fed6-37ed.ngrok.io/gosecuri.fr/users/$agentUsername.html"
+                        "https://4cca-2001-861-52-e230-a00-27ff-fed6-37ed.ngrok.io/gosecuri.fr/users/$agentUsername.html"
                     )
                     agents.add(agent)
                 }
