@@ -5,7 +5,7 @@ import java.util.*;
 
 
 public class HtmlGenerator {
-    private final Map<String, String> equipmentMap = MapGenerator.equipementHashMap();
+    private final Map<String, String> equipmentMap = MapGenerator.equipementMap();
     private final List<Agent> agentsInfosList = StaffList.createAgentsInfosList();
 
 

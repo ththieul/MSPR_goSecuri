@@ -11,7 +11,7 @@ import java.util.Objects;
 
 class MapGenerator {
     public static final String EQUIPEMENT_FILENAME = "./liste.txt";
-    public static Map<String, String> equipementHashMap()
+    public static Map<String, String> equipementMap()
     {
         Map<String, String> equipementMap = new HashMap<String, String>();
 
