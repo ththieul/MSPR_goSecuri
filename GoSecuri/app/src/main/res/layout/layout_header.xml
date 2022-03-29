@@ -15,15 +15,5 @@
             style="@style/HeaderStyleTextView"
             />
 
-        <ImageView
-            android:id="@+id/imageViewBack"
-            android:layout_centerVertical="true"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/back"
-            android:visibility="gone"
-            android:layout_marginStart="15dp"
-            />
-
     </RelativeLayout>
 </LinearLayout>
