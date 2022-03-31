@@ -9,9 +9,9 @@
         <entry key="..\:/Users/Romain/AndroidStudioProjects/GoSecuri/app/src/main/res/layout/activity_splash.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Romain/AndroidStudioProjects/GoSecuri/app/src/main/res/layout/cell_agent.xml" value="0.25" />
         <entry key="..\:/Users/Romain/AndroidStudioProjects/GoSecuri/app/src/main/res/layout/layout_header.xml" value="0.36666666666666664" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.18614130434782608" />
-        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.15653495440729484" />
-        <entry key="app/src/main/res/layout/cell_agent.xml" value="0.18614130434782608" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/cell_agent.xml" value="0.25" />
         <entry key="app/src/main/res/layout/layout_header.xml" value="0.29483695652173914" />
       </map>
     </option>
