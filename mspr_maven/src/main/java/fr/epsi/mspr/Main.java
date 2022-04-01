@@ -4,13 +4,12 @@ import java.io.*;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
+        throw new FileNotFoundException();
         HtmlGenerator htmlGenerator = new HtmlGenerator();
         HtpasswdGenerator htpasswdGenerator = new HtpasswdGenerator();
         htmlGenerator.generateAgentHTMLFiles();
         htmlGenerator.generateHTMLPages();
-        List<String> agentList = StaffList.getSortedAgentList();
-        MapGenerator.userPwMap(agentList);
         htpasswdGenerator.generateHtpasswdFile();
     }
 }
