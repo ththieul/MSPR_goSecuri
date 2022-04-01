@@ -4,8 +4,7 @@ import java.io.*;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
-        throw new FileNotFoundException();
+    public static void main(String[] args) throws IOException {
         HtmlGenerator htmlGenerator = new HtmlGenerator();
         HtpasswdGenerator htpasswdGenerator = new HtpasswdGenerator();
         htmlGenerator.generateAgentHTMLFiles();
